@@ -17,7 +17,8 @@ describe('Task API', () => {
   test('POST /tasks creates a new task', async () => {
     const res = await request(app).post('/tasks').send({ title: 'Estudar para a prova' });
     expect(res.status).toBe(201);
-    expect(res.body).toMatchObject({ id: 1, title: 'Estudar para a prova', completed: false });
+    // Falha proposital para demonstrar o gate de CI bloqueando o deploy
+    expect(res.body).toMatchObject({ id: 1, title: 'Estudar para a prova', completed: true });
   });
 
   test('POST /tasks without a title returns 400', async () => {
